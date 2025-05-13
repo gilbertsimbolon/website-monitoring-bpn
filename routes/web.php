@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DataPenggunaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,6 +11,10 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/data-pengguna', [DataPenggunaController::class, 'index'])->name('data.pengguna.index');
 });
 
 Route::middleware('auth')->group(function () {
