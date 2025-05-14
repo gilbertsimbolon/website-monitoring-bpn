@@ -39,6 +39,55 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <h1 class="text-center">Data Pengguna</h1>
+            <div class="wrapper">
+                <div class="row">
+
+            </div>
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="p-0 card-body table-responsive" style="height: 300px;">
+                            <table class="table table-head-fixed text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>Role</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user as $item)
+                                    <tr>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->password }}</td>
+                                        <td>{{ $item->role }}</td>
+                                        <td>
+                                            <form action="{{ route('data-pengguna.update', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="text" name="name" value="{{ $item->name }}">
+                                                <input type="email" name="email" value="{{ $item->email }}">
+                                                <button type="submit">Update</button>
+                                            </form>                                            
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('data-pengguna.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin hapus?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- /.content-wrapper -->
 
