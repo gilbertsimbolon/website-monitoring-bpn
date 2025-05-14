@@ -17,7 +17,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item" style="padding-left: 35px">
-                            <a href="/data-pengguna" class="nav-link">
+                            <a href="/pegawai/data-pengguna" class="nav-link">
                                 <p>Pengguna</p>
                             </a>
                         </li>

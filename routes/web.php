@@ -13,8 +13,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
-Route::middleware('auth')->group(function () {
+Route::prefix('pegawai')->group(function () {
     Route::get('/data-pengguna', [DataPenggunaController::class, 'index'])->name('data.pengguna.index');
+    Route::post('/data-pengguna', [DataPenggunaController::class, 'store'])->name('data.pengguna.store');
 });
 
 Route::middleware('auth')->group(function () {
