@@ -31,7 +31,48 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <h1 class="text-center">Website Monitoring <br> Badan Pertanahan Nasional</h1>
+        <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+            <div class="p-4 mx-auto shadow card"
+                style="background-color: #ffe5e5; border-radius: 20px; width: 90%; max-width: 1000px;">
+                <div class="flex-wrap row g-4 align-items-start">
+                    <!-- Kiri: Logo dan Judul -->
+                    <div class="col-md-6 d-flex align-items-center">
+                        <img src="{{ asset('img/logo-bpn.png') }}" alt="Logo BPN" style="width: 100px; height: auto;" class="me-3">
+                        <div>
+                            <h2 class="mb-0 fw-bold text-uppercase" style="font-weight: bold">Website Monitoring</h2>
+                            <h4 class="mb-0 fw-bold" style="font-weight: bold">Badan Pertanahan Nasional</h4>
+                        </div>
+                    </div>
+            
+                    <!-- Kanan: Fitur pencarian & pengajuan -->
+                    <div class="col-md-6">
+                        <div class="p-4 bg-white rounded shadow" style="border-radius: 20px;">
+                            <form class="px-2 py-1 mb-3" style="border: 2px solid yellow; border-radius: 10px">
+                                <label for="search" class="form-label">Tracking Status Pengajuan:</label>
+                                <input type="text" id="search" class="form-control" placeholder="Masukkan pencarian...">
+                                <button type="submit" class="mt-2 w-100 btn btn-warning fw-bold">
+                                    Tracking Proses
+                                </button>
+                            </form>
+            
+                            <div class="px-2 py-1 mt-2" style="border: 2px solid green; border-radius: 10px">
+                                <label>Ingin mengajukan sertifikat? Klik tombol di bawah ini:</label>
+                                <a href="/pengajuan-sertifikat" class="mt-2 btn btn-success w-100 fw-bold">Pengajuan Sertifikat</a>
+                            </div>
+            
+                            <div class="px-2 py-1 mt-4" style="border: 2px solid gray; border-radius: 10px">
+                                <label>Puas dengan layanan kami? Silakan isi feedback di bawah ini:</label>
+                                <button class="mt-2 w-100 btn btn-secondary fw-bold">
+                                    Penilaian Anda
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+
     </div>
     <!-- ./wrapper -->
 

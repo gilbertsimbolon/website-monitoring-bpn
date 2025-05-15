@@ -25,7 +25,7 @@
                 </li>
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-alt"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             Pegawai
                             <i class="right fas fa-angle-left"></i>

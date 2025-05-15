@@ -37,17 +37,17 @@
                 @include('components.modal-tambah-data')
             </div>
             <div class="col-12">
-                <div class="card">
+                <div class="card" style="border-radius: 20px">
                     <!-- /.card-header -->
                     <div class="p-0 card-body table-responsive" style="height: 680px;">
                             <table class="table table-head-fixed text-nowrap table-striped">
-                                <thead class="bg-warning">
+                                <thead class="bg-warning" style="border-top-left-radius: 10px; border-top-right-radius: 10px" >
                                     <tr>
-                                        <th class="bg-warning">Nama</th>
+                                        <th class="bg-warning" style="border-top-left-radius: 10px">Nama</th>
                                         <th class="bg-warning">Email</th>
                                         <th class="bg-warning">Password</th>
                                         <th class="bg-warning">Role</th>
-                                        <th class="bg-warning" style="width: 140px">Aksi</th>
+                                        <th class="bg-warning" style="width: 140px; border-top-right-radius: 10px">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
