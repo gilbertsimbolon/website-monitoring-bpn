@@ -32,14 +32,14 @@
             <h1 class="text-center">Data Pengguna</h1>
             <div class="mb-1 d-flex justify-content-end" style="padding-right: 6px;">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahDataPengguna" style="border-radius: 20px">
-                    Tambah Data 
+                    Tambah Data
                 </button>
                 @include('components.modal-tambah-data')
             </div>
             <div class="col-12">
                 <div class="card">
                     <!-- /.card-header -->
-                    <div class="p-0 card-body table-responsive" style="height: 300px;">
+                    <div class="p-0 card-body table-responsive" style="height: 680px;">
                             <table class="table table-head-fixed text-nowrap table-striped">
                                 <thead class="bg-warning">
                                     <tr>
@@ -58,16 +58,15 @@
                                         <td>******************</td>
                                         <td>{{ $item->role }}</td>
                                         {{-- <td>dd($item->role)</td> --}}
-                                        {{-- <td>
-                                            <form action="{{ route('data-pengguna.update', $item->id) }}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="text" name="name" value="{{ $item->name }}">
-                                                <input type="email" name="email" value="{{ $item->email }}">
-                                                <button type="submit">Update</button>
-                                            </form>
-                                        </td>
                                         <td>
+                                            <!-- Tombol ikon Edit -->
+                                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                                data-bs-target="#editModal-{{ $item->id }}" title="Edit">
+                                                <i class="bi bi-pencil-square"></i> {{-- Ikon Bootstrap --}}
+                                            </button>
+                                            @include('components.modal-edit-data-pengguna')
+                                        </td>                                        
+                                        {{-- <td>
                                             <form action="{{ route('data-pengguna.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin hapus?')">
                                                 @csrf
                                                 @method('DELETE')
@@ -84,24 +83,24 @@
                 </div>
             </div>
             <!-- /.content-wrapper -->
-            
+
             @include('admin.footer')
         </div>
         <!-- ./wrapper -->
-        
+
     <!-- JQUERY (Pindahkan ke paling atas dari semua JS) -->
     <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
-    
+
     <!-- DataTables + Export Script -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    
+
     <!-- Bootstrap JS (setelah jQuery & DataTables) -->
     <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AdminLTE -->
     <script src="{{ asset('lte/dist/js/adminlte.min.js') }}"></script>
 </body>

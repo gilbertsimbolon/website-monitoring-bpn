@@ -31,21 +31,21 @@ class DataPenggunaController extends Controller
         );
     }
 
-    // // Tampilkan form edit
-    // public function edit($id)
-    // {
-    //     $user = User::findOrFail($id);
-    //     return view('main.data-pengguna', compact('user'));
-    // }
+    // Tampilkan form edit
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('main.data-pengguna', compact('user'));
+    }
 
-    // // Update data setelah form disubmit
-    // public function update(Request $request, $id)
-    // {
-    //     $user = User::findOrFail($id);
-    //     $user->update($request->all());
+    // Update data setelah form disubmit
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
 
-    //     return redirect()->route('data-pengguna.index')->with('success', 'Data berhasil diperbarui.');
-    // }
+        return redirect()->route('data.pengguna.index')->with('success', 'Data berhasil diperbarui.');
+    }
 
     // // Hapus data
     // public function destroy($id)
