@@ -33,7 +33,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item" style="padding-left: 35px">
-                            <a href="/pegawai/data-pengguna" class="nav-link">
+                            <a href="{{ route('pengajuan.sertifikat.index') }}" class="nav-link">
                                 <p>Pengajuan Sertifikat</p>
                             </a>
                         </li>

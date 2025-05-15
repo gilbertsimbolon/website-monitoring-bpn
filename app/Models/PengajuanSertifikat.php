@@ -2,27 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PengajuanSertifikat extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama_lengkap',
-        'nomor_hp',
+        'nama',
         'nik',
-        'no_kk',
-        'sertifikat_asli',
-        'akta_jual_beli',
-        'surat_waris',
-        'girik',
-        'keterangan',
-        'sppt_pbb',
-        'denah_lokasi',
-        'npwp',
-        'surat_kuasa',
-        'formulir_permohonan',
+        'no_hp',
+        'alamat',
+        'jenis_sertifikat',
+        'lokasi_tanah',
+        'luas_tanah',
+        'status',
     ];
 }

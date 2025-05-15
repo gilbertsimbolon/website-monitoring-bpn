@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DataPenggunaController;
+use App\Http\Controllers\Admin\PengajuanSertifikatController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,10 @@ Route::prefix('admin/')->group(function () {
     Route::get('/data-pengguna/edit/{id}', [DataPenggunaController::class, 'edit'])->name('data.pengguna.edit');
     Route::put('/data-pengguna/{id}', [DataPenggunaController::class, 'update'])->name('data.pengguna.update');
     Route::delete('/data-pengguna/{id}', [DataPenggunaController::class, 'destroy'])->name('data.pengguna.destroy');
+});
+
+Route::prefix('pegawai/')->group(function () {
+    Route::get('/pengajuan-sertifikat', [PengajuanSertifikatController::class, 'index'])->name('pengajuan.sertifikat.index');
 });
 
 
