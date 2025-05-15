@@ -10,13 +10,20 @@ class PengajuanSertifikat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
+        'nama_lengkap',
+        'nomor_hp',
         'nik',
-        'no_hp',
-        'alamat',
-        'jenis_sertifikat',
-        'lokasi_tanah',
-        'luas_tanah',
+        'no_kk',
+        'sertifikat_asli',
+        'akta_jual_beli',
+        'surat_waris',
+        'girik',
+        'keterangan',
+        'sppt_pbb',
+        'denah_lokasi',
+        'npwp',
+        'surat_kuasa',
+        'formulir_permohonan',
         'status',
     ];
 }
