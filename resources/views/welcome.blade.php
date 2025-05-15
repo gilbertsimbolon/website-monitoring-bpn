@@ -47,13 +47,28 @@
                     <!-- Kanan: Fitur pencarian & pengajuan -->
                     <div class="col-md-6">
                         <div class="p-4 bg-white rounded shadow" style="border-radius: 20px;">
-                            <form class="px-2 py-1 mb-3" style="border: 2px solid yellow; border-radius: 10px">
+                            <form id="trackingForm" class="px-2 py-1 mb-3" style="border: 2px solid yellow; border-radius: 10px">
                                 <label for="search" class="form-label">Tracking Status Pengajuan:</label>
-                                <input type="text" id="search" class="form-control" placeholder="P-XXXXXXXXXXXXXXXXX">
+                                <input type="text" id="search" class="form-control" name="nomor_permohonan" placeholder="P-XXXXXXXXXXXXXXXXX"
+                                    required>
                                 <button type="submit" class="mt-2 w-100 btn btn-warning fw-bold">
                                     Tracking Proses
                                 </button>
                             </form>
+                            <!-- Modal -->
+                            <div class="modal fade" id="trackingModal" tabindex="-1" aria-labelledby="trackingModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Status Pengajuan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" id="trackingResult">
+                                            Memuat...
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                         
 
                             <!-- Tombol untuk membuka modal -->
                             <div class="px-2 py-1 mt-2" style="border: 2px solid green; border-radius: 10px">
@@ -115,6 +130,36 @@
     <script src="{{ asset('lte/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
+    <script>
+        document.getElementById('trackingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nomor = document.getElementById('search').value;
+            
+                fetch(`/tracking-status?nomor_permohonan=${nomor}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        let html = '';
+                        if (data.status === 'found') {
+                            html = `
+                                <p><strong>Nama:</strong> ${data.result.nama}</p>
+                                <p><strong>Nomor Permohonan:</strong> ${data.result.nomor}</p>
+                                <p><strong>Status:</strong> <span class="badge bg-info text-dark">${data.result.status}</span></p>
+                            `;
+                        } else {
+                            html = `<p class="text-danger">${data.message}</p>`;
+                        }
+            
+                        document.getElementById('trackingResult').innerHTML = html;
+                        const modal = new bootstrap.Modal(document.getElementById('trackingModal'));
+                        modal.show();
+                    })
+                    .catch(error => {
+                        document.getElementById('trackingResult').innerHTML = '<p class="text-danger">Terjadi kesalahan saat mencari data.</p>';
+                        const modal = new bootstrap.Modal(document.getElementById('trackingModal'));
+                        modal.show();
+                    });
+            });
+    </script>        
     @if(session('success'))
     <script>
         document.addEventListener('DOMContentLoaded', function () {

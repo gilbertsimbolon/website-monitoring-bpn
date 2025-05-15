@@ -101,16 +101,38 @@ class PengajuanSertifikatController extends Controller
     }
 
     public function updateStatus(Request $request, $id)
-{
-    $request->validate([
-        'status' => 'required|in:proses,verifikasi,selesai,ditolak',
-    ]);
+    {
+        $request->validate([
+            'status' => 'required|in:proses,verifikasi,selesai,ditolak',
+        ]);
 
-    $data = PengajuanSertifikat::findOrFail($id);
-    $data->status = $request->status;
-    $data->save();
+        $data = PengajuanSertifikat::findOrFail($id);
+        $data->status = $request->status;
+        $data->save();
 
-    return redirect()->back()->with('success', 'Status berhasil diperbarui.');
-}
+        return redirect()->back()->with('success', 'Status berhasil diperbarui.');
+    }
 
+    public function trackingStatus(Request $request)
+    {
+        $nomor = $request->query('nomor_permohonan');
+
+        $data = PengajuanSertifikat::where('nomor_permohonan', $nomor)->first();
+
+        if (!$data) {
+            return response()->json([
+                'status' => 'not_found',
+                'message' => 'Nomor permohonan tidak ditemukan.'
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'found',
+            'result' => [
+                'nama' => $data->nama_lengkap,
+                'status' => $data->status,
+                'nomor' => $data->nomor_permohonan,
+            ]
+        ]);
+    }
 }

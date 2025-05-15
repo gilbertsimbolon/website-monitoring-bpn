@@ -11,6 +11,9 @@ Route::get('/', [WelcomeController::class, 'index'])->name('index');
 
 Route::post('/pengajuan-sertifikat', [PengajuanSertifikatController::class, 'store'])->name('pengajuan.store');
 
+Route::get('/tracking-status', [PengajuanSertifikatController::class, 'trackingStatus'])->name('pengajuan.tracking');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
