@@ -63,16 +63,73 @@
                                         <td>{{ $item->nomor_hp }}</td>
                                         <td>{{ $item->nik }}</td>
                                         <td>{{ $item->no_kk }}</td>
-                                        <td>{{ $item->sertifikat_asli }}</td>
-                                        <td>{{ $item->akta_jual_beli }}</td>
-                                        <td>{{ $item->surat_waris }}</td>
-                                        <td>{{ $item->girik }}</td>
-                                        <td>{{ $item->keterangan }}</td>
-                                        <td>{{ $item->sppt_pbb }}</td>
+                                        <td>
+                                            @if($item->sertifikat_asli)
+                                            <a href="{{ asset('storage/' . $item->sertifikat_asli) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                        
+                                        <td>
+                                            @if($item->akta_jual_beli)
+                                            <a href="{{ asset('storage/' . $item->akta_jual_beli) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                        
+                                        <td>
+                                            @if($item->surat_waris)
+                                            <a href="{{ asset('storage/' . $item->surat_waris) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                        
+                                        <td>
+                                            @if($item->girik)
+                                            <a href="{{ asset('storage/' . $item->girik) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                        
+                                        <td>
+                                            @if($item->keterangan)
+                                            <a href="{{ asset('storage/' . $item->keterangan) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                        
+                                        <td>
+                                            @if($item->sppt_pbb)
+                                            <a href="{{ asset('storage/' . $item->sppt_pbb) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                        
                                         <td>{{ $item->denah_lokasi }}</td>
+                                        
                                         <td>{{ $item->npwp }}</td>
-                                        <td>{{ $item->surat_kuasa }}</td>
-                                        <td>{{ $item->formulir_permohonan }}</td>                                                               
+                                        
+                                        <td>
+                                            @if($item->surat_kuasa)
+                                            <a href="{{ asset('storage/' . $item->surat_kuasa) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                        
+                                        <td>
+                                            @if($item->formulir_permohonan)
+                                            <a href="{{ asset('storage/' . $item->formulir_permohonan) }}" download>Unduh</a>
+                                            @else
+                                            <span class="text-muted">-</span>
+                                            @endif
+                                        </td>                                                                                                   
                                     </tr>
                                     @endforeach
                                 </tbody>
