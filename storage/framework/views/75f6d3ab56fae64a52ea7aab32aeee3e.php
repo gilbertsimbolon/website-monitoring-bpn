@@ -12,10 +12,10 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('lte/plugins/fontawesome-free/css/all.min.css')); ?>">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
-    <script src="{{ asset('js/date-time.js') }}"></script>
+    <link rel="stylesheet" href="<?php echo e(asset('lte/dist/css/adminlte.min.css')); ?>">
+    <script src="<?php echo e(asset('js/date-time.js')); ?>"></script>
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
@@ -23,9 +23,9 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        @include('admin.header')
+        <?php echo $__env->make('admin.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-        @include('admin.sidebar')
+        <?php echo $__env->make('admin.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper card">
@@ -56,83 +56,83 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $item)
+                                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td>{{ $item->nomor_permohonan }}</td>
-                                        <td>{{ $item->nama_lengkap }}</td>
-                                        <td>{{ $item->nomor_hp }}</td>
-                                        <td>{{ $item->nik }}</td>
-                                        <td>{{ $item->no_kk }}</td>
+                                        <td><?php echo e($item->nomor_permohonan); ?></td>
+                                        <td><?php echo e($item->nama_lengkap); ?></td>
+                                        <td><?php echo e($item->nomor_hp); ?></td>
+                                        <td><?php echo e($item->nik); ?></td>
+                                        <td><?php echo e($item->no_kk); ?></td>
                                         <td>
-                                            @if($item->sertifikat_asli)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'sertifikasi_asli', 'filename' => basename($item->sertifikat_asli)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->sertifikat_asli): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'sertifikasi_asli', 'filename' => basename($item->sertifikat_asli)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                         <td>
-                                            @if($item->akta_jual_beli)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'akta_jual_beli', 'filename' => basename($item->akta_jual_beli)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->akta_jual_beli): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'akta_jual_beli', 'filename' => basename($item->akta_jual_beli)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                         <td>
-                                            @if($item->surat_waris)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'surat_waris', 'filename' => basename($item->surat_waris)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->surat_waris): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'surat_waris', 'filename' => basename($item->surat_waris)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                         <td>
-                                            @if($item->girik)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'girik', 'filename' => basename($item->girik)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->girik): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'girik', 'filename' => basename($item->girik)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                         <td>
-                                            @if($item->keterangan)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'keterangan', 'filename' => basename($item->keterangan)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->keterangan): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'keterangan', 'filename' => basename($item->keterangan)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                         <td>
-                                            @if($item->sppt_pbb)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'sppt_pbb', 'filename' => basename($item->sppt_pbb)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->sppt_pbb): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'sppt_pbb', 'filename' => basename($item->sppt_pbb)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
-                                        <td>{{ $item->denah_lokasi }}</td>
+                                        <td><?php echo e($item->denah_lokasi); ?></td>
 
-                                        <td>{{ $item->npwp }}</td>
+                                        <td><?php echo e($item->npwp); ?></td>
 
                                         <td>
-                                            @if($item->surat_kuasa)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'surat_kuasa', 'filename' => basename($item->surat_kuasa)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->surat_kuasa): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'surat_kuasa', 'filename' => basename($item->surat_kuasa)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                         <td>
-                                            @if($item->formulir_permohonan)
-                                                <a href="{{ route('pengajuan.download', ['field' => 'formulir_permohonan', 'filename' => basename($item->formulir_permohonan)]) }}" download>Unduh</a>
-                                            @else
+                                            <?php if($item->formulir_permohonan): ?>
+                                                <a href="<?php echo e(route('pengajuan.download', ['field' => 'formulir_permohonan', 'filename' => basename($item->formulir_permohonan)])); ?>" download>Unduh</a>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
 
                                     </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
                         </div>
@@ -142,12 +142,12 @@
         </div>
         <!-- /.content-wrapper -->
 
-        @include('admin.footer')
+        <?php echo $__env->make('admin.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     </div>
     <!-- ./wrapper -->
 
     <!-- JQUERY (Pindahkan ke paling atas dari semua JS) -->
-    <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="<?php echo e(asset('lte/plugins/jquery/jquery.min.js')); ?>"></script>
 
     <!-- DataTables + Export Script -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -156,12 +156,13 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
 
     <!-- Bootstrap JS (setelah jQuery & DataTables) -->
-    <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="<?php echo e(asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- AdminLTE -->
-    <script src="{{ asset('lte/dist/js/adminlte.min.js') }}"></script>
+    <script src="<?php echo e(asset('lte/dist/js/adminlte.min.js')); ?>"></script>
 
 </body>
 
 </html>
+<?php /**PATH C:\laragon\www\website-monitoring-bpn\resources\views/main/pengajuan-sertifikat.blade.php ENDPATH**/ ?>

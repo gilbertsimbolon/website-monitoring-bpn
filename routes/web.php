@@ -25,6 +25,9 @@ Route::prefix('admin/')->group(function () {
 
 Route::prefix('pegawai/')->group(function () {
     Route::get('/pengajuan-sertifikat', [PengajuanSertifikatController::class, 'index'])->name('pengajuan.sertifikat.index');
+    Route::get('/pengajuan/download/{field}/{filename}', [PengajuanSertifikatController::class, 'download'])
+    ->name('pengajuan.download');
+
 });
 
 

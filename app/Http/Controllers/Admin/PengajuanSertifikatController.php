@@ -52,7 +52,7 @@ class PengajuanSertifikatController extends Controller
         // Upload file jika ada, jika tidak isi null
         foreach ($fieldsWithFiles as $field) {
             if ($request->hasFile($field)) {
-                $validate[$field] = $request->file($field)->store('dokumen');
+                $validate[$field] = $request->file($field)->store('dokumen', 'public');
             } else {
                 $validate[$field] = null;
             }
@@ -70,5 +70,33 @@ class PengajuanSertifikatController extends Controller
             'nama_lengkap'      => $validate['nama_lengkap'],
             'nomor_permohonan'  => $validate['nomor_permohonan'],
         ]);
+    }
+
+    public function download($field, $filename)
+    {
+        // Daftar field yang diperbolehkan
+        $allowedFields = [
+            'sertifikasi_asli',
+            'akta_jual_beli',
+            'surat_waris',
+            'girik',
+            'sppt_pbb',
+            'surat_kuasa',
+            'formulir_permohonan',
+            'keterangan',
+        ];
+
+        if (!in_array($field, $allowedFields)) {
+            abort(404);
+        }
+
+        // Path file di storage/app/public/dokumen/
+        $filePath = storage_path('app/public/dokumen/' . $filename);
+
+        if (!file_exists($filePath)) {
+            abort(404);
+        }
+
+        return response()->download($filePath);
     }
 }
