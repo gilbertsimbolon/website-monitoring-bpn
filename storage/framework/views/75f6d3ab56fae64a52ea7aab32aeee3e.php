@@ -130,7 +130,18 @@
                                                 <span class="text-muted">-</span>
                                             <?php endif; ?>
                                         </td>
-
+                                        <td>
+                                            <form action="<?php echo e(route('pengajuan.updateStatus', $item->id)); ?>" method="POST">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('PUT'); ?>
+                                                <select name="status" onchange="this.form.submit()">
+                                                    <option value="proses" <?php echo e($item->status == 'proses' ? 'selected' : ''); ?>>Proses</option>
+                                                    <option value="verifikasi" <?php echo e($item->status == 'verifikasi' ? 'selected' : ''); ?>>Verifikasi</option>
+                                                    <option value="selesai" <?php echo e($item->status == 'selesai' ? 'selected' : ''); ?>>Selesai</option>
+                                                    <option value="ditolak" <?php echo e($item->status == 'ditolak' ? 'selected' : ''); ?>>Ditolak</option>
+                                                </select>
+                                            </form>
+                                        </td>                                        
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>

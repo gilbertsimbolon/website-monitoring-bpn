@@ -99,4 +99,18 @@ class PengajuanSertifikatController extends Controller
 
         return response()->download($filePath);
     }
+
+    public function updateStatus(Request $request, $id)
+{
+    $request->validate([
+        'status' => 'required|in:proses,verifikasi,selesai,ditolak',
+    ]);
+
+    $data = PengajuanSertifikat::findOrFail($id);
+    $data->status = $request->status;
+    $data->save();
+
+    return redirect()->back()->with('success', 'Status berhasil diperbarui.');
+}
+
 }

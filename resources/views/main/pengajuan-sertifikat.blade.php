@@ -130,7 +130,18 @@
                                                 <span class="text-muted">-</span>
                                             @endif
                                         </td>
-
+                                        <td>
+                                            <form action="{{ route('pengajuan.updateStatus', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="status" onchange="this.form.submit()">
+                                                    <option value="proses" {{ $item->status == 'proses' ? 'selected' : '' }}>Proses</option>
+                                                    <option value="verifikasi" {{ $item->status == 'verifikasi' ? 'selected' : '' }}>Verifikasi</option>
+                                                    <option value="selesai" {{ $item->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                                    <option value="ditolak" {{ $item->status == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
+                                                </select>
+                                            </form>
+                                        </td>                                        
                                     </tr>
                                     @endforeach
                                 </tbody>

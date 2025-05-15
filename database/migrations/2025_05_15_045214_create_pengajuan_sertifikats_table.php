@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('npwp')->nullable();
             $table->string('surat_kuasa')->nullable();
             $table->string('formulir_permohonan');
-            $table->enum('status', ['proses', 'verifikasi', 'selesai'])->default('proses');
+            $table->enum('status', ['proses', 'verifikasi', 'selesai', 'ditolak'])->default('proses');
             $table->timestamps();
         });
     }
