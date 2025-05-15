@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -43,23 +43,27 @@
                             <h4 class="mb-0 fw-bold" style="font-weight: bold">Badan Pertanahan Nasional</h4>
                         </div>
                     </div>
-            
+
                     <!-- Kanan: Fitur pencarian & pengajuan -->
                     <div class="col-md-6">
                         <div class="p-4 bg-white rounded shadow" style="border-radius: 20px;">
                             <form class="px-2 py-1 mb-3" style="border: 2px solid yellow; border-radius: 10px">
                                 <label for="search" class="form-label">Tracking Status Pengajuan:</label>
-                                <input type="text" id="search" class="form-control" placeholder="Masukkan pencarian...">
+                                <input type="text" id="search" class="form-control" placeholder="P-XXXXXXXXXXXXXXXXX">
                                 <button type="submit" class="mt-2 w-100 btn btn-warning fw-bold">
                                     Tracking Proses
                                 </button>
                             </form>
-            
+
+                            <!-- Tombol untuk membuka modal -->
                             <div class="px-2 py-1 mt-2" style="border: 2px solid green; border-radius: 10px">
                                 <label>Ingin mengajukan sertifikat? Klik tombol di bawah ini:</label>
-                                <a href="/pengajuan-sertifikat" class="mt-2 btn btn-success w-100 fw-bold">Pengajuan Sertifikat</a>
+                                <button class="mt-2 btn btn-success w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalPengajuan">
+                                    Pengajuan Sertifikat
+                                </button>
+                                @include('components.modal-pengajuan-sertifikat')
                             </div>
-            
+
                             <div class="px-2 py-1 mt-4" style="border: 2px solid gray; border-radius: 10px">
                                 <label>Puas dengan layanan kami? Silakan isi feedback di bawah ini:</label>
                                 <button class="mt-2 w-100 btn btn-secondary fw-bold">
@@ -69,8 +73,9 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
+        @include('components.modal-pengajuan-berhasil') 
 
 
     </div>
@@ -84,8 +89,8 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->
     <script src="{{ asset('lte/plugins/chart.js/Chart.min.js') }}"></script>
     <!-- Sparkline -->
@@ -110,6 +115,14 @@
     <script src="{{ asset('lte/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
+    @if(session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                var modal = new bootstrap.Modal(document.getElementById('modalBerhasil'));
+                modal.show();
+            });
+    </script>
+    @endif
 </body>
 
 </html>

@@ -72,30 +72,8 @@
                                         <td>{{ $item->denah_lokasi }}</td>
                                         <td>{{ $item->npwp }}</td>
                                         <td>{{ $item->surat_kuasa }}</td>
-                                        <td>{{ $item->formulir_permohonan }}</td>
-                                        
-                                        <td class="text-nowrap">
-                                            <div class="gap-4" role="group">
-                                                {{-- Edit --}}
-                                                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal-{{ $item->id }}" title="Edit" style="width: 70px">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </button>
-                                            
-                                                {{-- Hapus --}}
-                                                <form action="{{ route('data.pengguna.destroy', ['id' => $item->id]) }}" method="POST"
-                                                    onsubmit="return confirm('Yakin ingin menghapus data ini?')" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus" style="width: 70px">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </div>                                        
-                                            @include('components.modal-edit-data-pengguna')
-                                        </td>                                                                     
+                                        <td>{{ $item->formulir_permohonan }}</td>                                                               
                                     </tr>
-
                                     @endforeach
                                 </tbody>
                             </table>
@@ -125,6 +103,7 @@
 
     <!-- AdminLTE -->
     <script src="{{ asset('lte/dist/js/adminlte.min.js') }}"></script>
+     
 </body>
 
 </html>
