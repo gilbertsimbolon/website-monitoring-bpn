@@ -18,7 +18,10 @@ Route::prefix('pegawai')->group(function () {
     Route::post('/data-pengguna', [DataPenggunaController::class, 'store'])->name('data.pengguna.store');
     Route::get('/data-pengguna/edit/{id}', [DataPenggunaController::class, 'edit'])->name('data.pengguna.edit');
     Route::put('/data-pengguna/{id}', [DataPenggunaController::class, 'update'])->name('data.pengguna.update');
+    Route::delete('/data-pengguna/{id}', [DataPenggunaController::class, 'destroy'])->name('data.pengguna.destroy');
 });
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [ProfileController::class, 'edit'])->name('admin.index');

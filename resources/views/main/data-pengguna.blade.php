@@ -47,7 +47,7 @@
                                         <th class="bg-warning">Email</th>
                                         <th class="bg-warning">Password</th>
                                         <th class="bg-warning">Role</th>
-                                        <th class="bg-warning">Aksi</th>
+                                        <th class="bg-warning" style="width: 140px">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,21 +58,26 @@
                                         <td>******************</td>
                                         <td>{{ $item->role }}</td>
                                         {{-- <td>dd($item->role)</td> --}}
-                                        <td>
-                                            <!-- Tombol ikon Edit -->
-                                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
-                                                data-bs-target="#editModal-{{ $item->id }}" title="Edit">
-                                                <i class="bi bi-pencil-square"></i> {{-- Ikon Bootstrap --}}
-                                            </button>
+                                        <td class="text-nowrap">
+                                            <div class="gap-4" role="group">
+                                                {{-- Edit --}}
+                                                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#editModal-{{ $item->id }}" title="Edit" style="width: 70px">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                            
+                                                {{-- Hapus --}}
+                                                <form action="{{ route('data.pengguna.destroy', ['id' => $item->id]) }}" method="POST"
+                                                    onsubmit="return confirm('Yakin ingin menghapus data ini?')" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus" style="width: 70px">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>                                        
                                             @include('components.modal-edit-data-pengguna')
-                                        </td>                                        
-                                        {{-- <td>
-                                            <form action="{{ route('data-pengguna.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin hapus?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit">Hapus</button>
-                                            </form>
-                                        </td> --}}
+                                        </td>                                                                     
                                     </tr>
 
                                     @endforeach

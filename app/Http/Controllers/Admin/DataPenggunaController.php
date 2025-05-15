@@ -47,12 +47,12 @@ class DataPenggunaController extends Controller
         return redirect()->route('data.pengguna.index')->with('success', 'Data berhasil diperbarui.');
     }
 
-    // // Hapus data
-    // public function destroy($id)
-    // {
-    //     $user = User::findOrFail($id);
-    //     $user->delete();
+    // Hapus data
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
 
-    //     return redirect()->route('data-pengguna.index')->with('success', 'Data berhasil dihapus.');
-    // }
+        return redirect()->route('data.pengguna.index')->with('success', 'Data berhasil dihapus.');
+    }
 }
