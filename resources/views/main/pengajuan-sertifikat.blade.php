@@ -31,22 +31,34 @@
         <div class="content-wrapper card">
             <h1 class="text-center">Pengajuan Sertifikat</h1>
             <div class="col-12">
-                div class="card" style="border-radius: 20px">
+                <div class="card" style="border-radius: 20px">
                     <!-- /.card-header -->
-                    <div class="p-0 card-body table-responsive" style="height: 680px;">
+                    <div class="p-0 card-body table-responsive" style="height: 710px;">
                             <table class="table table-head-fixed text-nowrap table-striped">
                                 <thead class="bg-warning" style="border-top-left-radius: 10px; border-top-right-radius: 10px" >
                                     <tr>
-                                        <th class="bg-warning" style="border-top-left-radius: 10px">Nama</th>
-                                        <th class="bg-warning">Email</th>
-                                        <th class="bg-warning">Password</th>
-                                        <th class="bg-warning">Role</th>
-                                        <th class="bg-warning" style="width: 140px; border-top-right-radius: 10px">Aksi</th>
+                                        <th class="bg-success" style="border-top-left-radius: 10px">Nomor Permohonan</th>
+                                        <th class="bg-success">Nama Lengkap</th>
+                                        <th class="bg-success">Nomor Handphone</th>
+                                        <th class="bg-success">NIK</th>
+                                        <th class="bg-success">No KK</th>
+                                        <th class="bg-success">Sertifikat Asli</th>
+                                        <th class="bg-success">Akta Jual Beli</th>
+                                        <th class="bg-success">Surat Waris</th>
+                                        <th class="bg-success">Girik</th>
+                                        <th class="bg-success">Keterangan</th>
+                                        <th class="bg-success">SPPT PBB</th>
+                                        <th class="bg-success">Denah Lokasi</th>
+                                        <th class="bg-success">NPWP</th>
+                                        <th class="bg-success">Surat Kuasa</th>
+                                        <th class="bg-success">Formulir Permohonan</th>
+                                        <th class="bg-success" style="width: 140px; border-top-right-radius: 10px">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $item)
                                     <tr>
+                                        <td>{{ $item->nomor_permohonan }}</td>
                                         <td>{{ $item->nama_lengkap }}</td>
                                         <td>{{ $item->nomor_hp }}</td>
                                         <td>{{ $item->nik }}</td>

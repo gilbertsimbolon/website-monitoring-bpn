@@ -10,6 +10,7 @@ class PengajuanSertifikat extends Model
     use HasFactory;
 
     protected $fillable = [
+        'nomor_permohonan',
         'nama_lengkap',
         'nomor_hp',
         'nik',
