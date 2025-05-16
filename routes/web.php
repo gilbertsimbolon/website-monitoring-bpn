@@ -15,15 +15,15 @@ Route::post('/pengajuan-sertifikat', [PengajuanSertifikatController::class, 'sto
 Route::get('/tracking-status', [PengajuanSertifikatController::class, 'trackingStatus'])->name('pengajuan.tracking');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:admin,pegawai'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 });
 
-Route::prefix('admin/')->group(function () {
+Route::prefix('admin/')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/data-pengguna', [DataPenggunaController::class, 'index'])->name('data.pengguna.index');
     Route::post('/data-pengguna', [DataPenggunaController::class, 'store'])->name('data.pengguna.store');
     Route::get('/data-pengguna/edit/{id}', [DataPenggunaController::class, 'edit'])->name('data.pengguna.edit');
