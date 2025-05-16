@@ -20,7 +20,7 @@ class RoleMiddleware
         if (!in_array($user->role, $roles)) {
             abort(403, 'Akses ditolak.');
         }
-
+        
         return $next($request);
     }
 }

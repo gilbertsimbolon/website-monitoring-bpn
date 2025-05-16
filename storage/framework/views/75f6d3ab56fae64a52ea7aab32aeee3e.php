@@ -33,8 +33,8 @@
             <div class="col-12">
                 <div class="card" style="border-radius: 20px">
                     <!-- /.card-header -->
-                    <div class="p-0 card-body table-responsive" style="height: 710px;">
-                            <table class="table table-head-fixed text-nowrap table-striped">
+                    <div class="p-0 card-body table-responsive" style="height: 800px;">
+                            <table class="table table-head-fixed text-nowrap table-striped" style="height: 800px">
                                 <thead class="bg-warning" style="border-top-left-radius: 10px; border-top-right-radius: 10px" >
                                     <tr>
                                         <th class="bg-success" style="border-top-left-radius: 10px">Nomor Permohonan</th>
